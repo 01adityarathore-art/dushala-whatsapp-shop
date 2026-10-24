@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dushala Bot Studio</title>
+<link rel="icon" href="media/asset/avatar.svg">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div class="mark"><span class="word" id="brandWord">DUSHALA</span><span class="sep"></span><span class="sub">Bot Studio</span></div>
+  <div class="topright">
+    <span class="mode" id="mode">Test mode</span>
+    <span class="clock" id="clock"></span>
+  </div>
+</header>
+
+<div class="demo-intro" id="demoIntro" hidden>
+  <div><b>A working demo of the WhatsApp shop.</b> On the left is what a customer sees on WhatsApp; on the right is the shop's back office.
+  Say <i>Hi</i> on the phone, or tap a suggestion below it. Everything runs in this browser: nothing is sent, and no payment is real.</div>
+  <button aria-label="Close">×</button>
+</div>
+<main class="layout">
+  <section class="phonecol" aria-label="Test phone">
+    <div class="phonebar">
+      <div class="who" id="who"></div>
+      <button class="ghost small" id="clearChat" title="Removes the messages. The bot still remembers this client.">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Clear chat
+      </button>
+    </div>
+
+    <div class="device">
+      <div class="screen" id="screen">
+        <div class="island"></div>
+        <div class="status"><span id="statusTime">9:41</span><span class="sicons"><i class="sig"></i><i class="wifi"></i><i class="bat"></i></span></div>
+        <div class="wa-head">
+          <span class="back" aria-hidden="true">‹</span>
+          <img class="av" src="media/asset/avatar.svg" alt="">
+          <div class="who-txt"><div class="nm" id="waName">Dushala</div><div class="st">Business account</div></div>
+          <span class="hicons">
+            <button class="shopbtn" id="shopIcon" title="Catalogue" aria-label="Open the catalogue"><svg viewBox="0 0 24 24"><path d="M4 9l1.5-5h13L20 9M4 9h16M4 9a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0A2.7 2.7 0 0 0 20 9M5 11v9h14v-9M10 20v-5h4v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></button>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 8.5V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-1.5l5 3.5V5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5 9 3l2 5-2 1.3a12 12 0 0 0 5.7 5.7L16 13l5 2-.5 2.4A2.5 2.5 0 0 1 18 19.5 15.5 15.5 0 0 1 4.5 6 2.5 2.5 0 0 1 6.6 3.5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+        <div class="chat" id="chat" aria-live="polite"></div>
+        <form class="composer" id="composer" autocomplete="off">
+          <span class="plus" aria-hidden="true">+</span>
+          <input id="input" placeholder="Message" aria-label="Type a message as the client">
+          <button class="sendbtn" id="sendBtn" aria-label="Send">
+            <svg viewBox="0 0 24 24"><path d="M3.4 20.4 21 12 3.4 3.6l.1 6.5L15 12l-11.5 1.9z" fill="currentColor"/></svg>
+          </button>
+        </form>
+        <div class="homebar"></div>
+        <div class="sheet-wrap" id="sheetWrap"><div class="sheet" id="sheet"></div></div>
+        <div class="lightbox" id="lightbox"><img alt=""></div>
+      </div>
+    </div>
+
+    <div class="tryit">
+      <div class="lbl">Try typing as the client</div>
+      <div class="chips" id="tryChips"></div>
+    </div>
+
+    <div class="controls">
+      <div class="lbl">Test controls</div>
+      <div class="ctlrow">
+        <button class="ghost" id="clearChat2">Clear chat <span class="hint">messages go; the bot still remembers the client</span></button>
+        <button class="ghost" data-scenario="fresh">Start over as a new client <span class="hint">clears the chat and the bot forgets them</span></button>
+        <button class="ghost" data-scenario="away">Client returns after 3 days</button>
+        <button class="ghost" id="qrBtn" title="Available after an order is paid">Recipient scans the QR in the box</button>
+      </div>
+      <label class="switch"><input type="checkbox" id="failPay"><span></span>Next payment fails</label>
+      <label class="switch"><input type="checkbox" id="quiet"><span></span>Respect quiet hours (9 pm to 9 am)</label>
+      <button class="link danger" data-scenario="everything">Clear all test data</button>
+    </div>
+  </section>
+
+  <section class="studio" aria-label="Studio">
+    <div class="phonenotes" id="notes"></div>
+    <nav class="tabs" id="tabs" role="tablist">
+      <button role="tab" data-tab="orders">Orders <b id="nOrders"></b></button>
+      <button role="tab" data-tab="inbox">Inbox <b id="nInbox"></b></button>
+      <button role="tab" data-tab="requests">Viewings &amp; requests <b id="nReq"></b></button>
+      <button role="tab" data-tab="catalogue">Catalogue <b id="nCat"></b></button>
+      <button role="tab" data-tab="wire">Sent to WhatsApp</button>
+      <button role="tab" data-tab="golive">Go live</button>
+    </nav>
+    <div class="panel" id="panel"></div>
+  </section>
+</main>
+<script src="app.js" type="module"></script>
+</body>
+</html>

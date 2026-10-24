@@ -1,0 +1,41 @@
+{
+  "brand": {
+    "name": "Dushala",
+    "tagline": "Heirloom shawls, made by hand in numbered editions",
+    "orderPrefix": "DU"
+  },
+  "curator": {
+    "name": "Ayesha",
+    "opensAt": 10,
+    "closesAt": 19
+  },
+  "quietHours": {
+    "from": 21,
+    "until": 9
+  },
+  "holdMinutes": 30,
+  "transferHoldHours": 48,
+  "prices": {
+    "walnutChest": 6500,
+    "monogram": 3500
+  },
+  "delivery": {
+    "prepDays": 2,
+    "transitDays": 3
+  },
+  "seller": {
+    "legalName": "Dushala Studio (sample — replace)",
+    "address": "Studio address (sample — replace)",
+    "state": "Delhi",
+    "gstin": "07AAAAA0000A1Z5 (sample)",
+    "grievanceOfficer": "Name (sample — replace)",
+    "grievanceEmail": "care@example.com"
+  },
+  "bank": {
+    "accountName": "Dushala Studio (sample)",
+    "bank": "Bank name (sample)",
+    "account": "0000 0000 0000",
+    "ifsc": "SAMP0000000"
+  },
+  "port": 8985
+}

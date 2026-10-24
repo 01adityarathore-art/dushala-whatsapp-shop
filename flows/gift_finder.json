@@ -1,0 +1,127 @@
+{
+  "version": "7.1",
+  "screens": [
+    {
+      "id": "GIFT",
+      "title": "Find the right piece",
+      "terminal": true,
+      "success": true,
+      "data": {
+        "recipients": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              }
+            }
+          },
+          "__example__": [
+            {
+              "id": "mother",
+              "title": "My mother"
+            }
+          ]
+        },
+        "occasions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              }
+            }
+          },
+          "__example__": [
+            {
+              "id": "wedding",
+              "title": "A wedding"
+            }
+          ]
+        },
+        "budgets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              }
+            }
+          },
+          "__example__": [
+            {
+              "id": "b1",
+              "title": "Up to \u20b915,000"
+            }
+          ]
+        }
+      },
+      "layout": {
+        "type": "SingleColumnLayout",
+        "children": [
+          {
+            "type": "Form",
+            "name": "form",
+            "children": [
+              {
+                "type": "TextBody",
+                "text": "Three quick choices, and we'll suggest three pieces."
+              },
+              {
+                "type": "ChipsSelector",
+                "name": "recipient",
+                "label": "Who is it for?",
+                "required": true,
+                "data-source": "${data.recipients}",
+                "min-selected-items": 1,
+                "max-selected-items": 1
+              },
+              {
+                "type": "ChipsSelector",
+                "name": "occasion",
+                "label": "The occasion",
+                "required": true,
+                "data-source": "${data.occasions}",
+                "min-selected-items": 1,
+                "max-selected-items": 1
+              },
+              {
+                "type": "ChipsSelector",
+                "name": "budget",
+                "label": "A budget to keep to",
+                "required": true,
+                "data-source": "${data.budgets}",
+                "min-selected-items": 1,
+                "max-selected-items": 1
+              },
+              {
+                "type": "Footer",
+                "label": "Show me three pieces",
+                "on-click-action": {
+                  "name": "complete",
+                  "payload": {
+                    "recipient": "${form.recipient}",
+                    "occasion": "${form.occasion}",
+                    "budget": "${form.budget}"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

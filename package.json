@@ -1,0 +1,16 @@
+{
+  "name": "shawl-bot",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Premium WhatsApp shawl-shop bot: test phone, owner Studio, WhatsApp Cloud API connector",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test test/*.test.js",
+    "build:demo": "node scripts/build-demo.mjs",
+    "demo": "node scripts/build-demo.mjs && cd site && python3 -m http.server 8986 --bind 127.0.0.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

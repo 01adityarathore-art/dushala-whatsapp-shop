@@ -1,0 +1,193 @@
+{
+  "version": "7.1",
+  "screens": [
+    {
+      "id": "OPTIONS",
+      "title": "Box, card & delivery",
+      "terminal": true,
+      "success": true,
+      "data": {
+        "piece": {
+          "type": "string",
+          "__example__": "Noor"
+        },
+        "for_whom": {
+          "type": "string",
+          "__example__": "gift"
+        },
+        "presentation_options": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              }
+            }
+          },
+          "__example__": [
+            {
+              "id": "box",
+              "title": "Signature box",
+              "description": "Complimentary"
+            }
+          ]
+        },
+        "card_options": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              }
+            }
+          },
+          "__example__": [
+            {
+              "id": "none",
+              "title": "No card",
+              "description": ""
+            }
+          ]
+        },
+        "delivery_options": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              }
+            }
+          },
+          "__example__": [
+            {
+              "id": "asap",
+              "title": "As soon as possible",
+              "description": "By Thursday 29 October"
+            }
+          ]
+        },
+        "min_date": {
+          "type": "string",
+          "__example__": "2026-10-30"
+        },
+        "max_date": {
+          "type": "string",
+          "__example__": "2026-12-29"
+        }
+      },
+      "layout": {
+        "type": "SingleColumnLayout",
+        "children": [
+          {
+            "type": "Form",
+            "name": "form",
+            "children": [
+              {
+                "type": "TextHeading",
+                "text": "${data.piece}"
+              },
+              {
+                "type": "RadioButtonsGroup",
+                "name": "for_whom",
+                "label": "Who is it for?",
+                "required": true,
+                "init-value": "${data.for_whom}",
+                "data-source": [
+                  {
+                    "id": "gift",
+                    "title": "A gift"
+                  },
+                  {
+                    "id": "me",
+                    "title": "For me"
+                  }
+                ]
+              },
+              {
+                "type": "RadioButtonsGroup",
+                "name": "presentation",
+                "label": "How shall we present it?",
+                "required": true,
+                "init-value": "box",
+                "data-source": "${data.presentation_options}"
+              },
+              {
+                "type": "If",
+                "condition": "${form.for_whom} == 'gift'",
+                "then": [
+                  {
+                    "type": "RadioButtonsGroup",
+                    "name": "card_choice",
+                    "label": "A handwritten card (for gifts)",
+                    "required": false,
+                    "data-source": "${data.card_options}"
+                  },
+                  {
+                    "type": "TextArea",
+                    "name": "card_text",
+                    "label": "Or in your own words",
+                    "required": false,
+                    "max-length": 200,
+                    "helper-text": "Our calligrapher writes it by hand, in ink"
+                  }
+                ]
+              },
+              {
+                "type": "RadioButtonsGroup",
+                "name": "delivery",
+                "label": "When should it arrive?",
+                "required": true,
+                "init-value": "asap",
+                "data-source": "${data.delivery_options}"
+              },
+              {
+                "type": "DatePicker",
+                "name": "date",
+                "label": "The day (if particular)",
+                "required": false,
+                "min-date": "${data.min_date}",
+                "max-date": "${data.max_date}"
+              },
+              {
+                "type": "Footer",
+                "label": "Continue to delivery address",
+                "on-click-action": {
+                  "name": "complete",
+                  "payload": {
+                    "for_whom": "${form.for_whom}",
+                    "presentation": "${form.presentation}",
+                    "card_choice": "${form.card_choice}",
+                    "card_text": "${form.card_text}",
+                    "delivery": "${form.delivery}",
+                    "date": "${form.date}"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
