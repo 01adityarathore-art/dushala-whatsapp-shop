@@ -32,7 +32,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
 @media (max-width: 1040px) { .layout { grid-template-columns: 1fr; justify-items: center; padding: 20px 16px; } .studio { width: 100%; } }
 
 /* ---------- phone column ---------- */
-.phonecol { display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 420px; }
+.phonecol { display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 420px; min-width: 0; }
 .phonebar { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
 .ghost.small { display: inline-flex; align-items: center; gap: 6px; border-radius: 999px; padding: 7px 12px; font-size: 13px; }
 .ghost.small svg { width: 15px; height: 15px; }
@@ -343,4 +343,12 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
 .still * { animation: none !important; transition: none !important; }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
 @media (max-width: 720px) { .clock { display: none; } .mark .sub { display: none; } .mark .sep { display: none; } }
-@media (max-width: 440px) { .device { height: 740px; border-radius: 46px; padding: 8px; } .screen { border-radius: 38px; } .top { padding: 0 16px; } .mark .sub { display: none; } }
+/* On a real phone, no phone drawn inside the phone: the chat fills the screen like WhatsApp itself. */
+@media (max-width: 500px) {
+  .device { width: 100%; height: calc(100svh - 28px); min-height: 560px; border-radius: 18px; padding: 0; background: none; box-shadow: 0 6px 24px -12px rgba(31,26,23,.4); }
+  .screen { border-radius: 18px; }
+  .island, .status, .homebar { display: none; }
+  .composer { padding-bottom: 10px; }
+  .top { padding: 0 16px; }
+  .mark .sub { display: none; }
+}
