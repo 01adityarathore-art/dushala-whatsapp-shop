@@ -10,7 +10,7 @@ import { createApp } from './src/app-core.js';
 import { invoiceHTML, certificateHTML } from './src/docs.js';
 import * as art from './src/art.js';
 
-const KEY = 'shawlbot.demo.v1';
+const KEY = 'shawlbot.demo.v2'; // v2: renamed to Pashmor, so old Dushala chats don't come back
 const params = new URLSearchParams(location.search);
 const seed = params.get('seed'); // screenshots only: a fixed conversation, not saved
 

@@ -1,8 +1,8 @@
 {
   "brand": {
-    "name": "Dushala",
+    "name": "Pashmor",
     "tagline": "Heirloom shawls, made by hand in numbered editions",
-    "orderPrefix": "DU"
+    "orderPrefix": "PM"
   },
   "curator": {
     "name": "Ayesha",
@@ -24,7 +24,7 @@
     "transitDays": 3
   },
   "seller": {
-    "legalName": "Dushala Studio (sample — replace)",
+    "legalName": "Pashmor Studio (sample — replace)",
     "address": "Studio address (sample — replace)",
     "state": "Delhi",
     "gstin": "07AAAAA0000A1Z5 (sample)",
@@ -32,7 +32,7 @@
     "grievanceEmail": "care@example.com"
   },
   "bank": {
-    "accountName": "Dushala Studio (sample)",
+    "accountName": "Pashmor Studio (sample)",
     "bank": "Bank name (sample)",
     "account": "0000 0000 0000",
     "ifsc": "SAMP0000000"

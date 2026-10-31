@@ -70,7 +70,7 @@ test('a new client is welcomed by name, and the welcome is itself a swipe of the
   const { as } = setup();
   const [m] = msgs(as('c1', 'Meera ✨ Kapoor').say('Hi'));
   assert.equal(m.type, 'carousel');
-  assert.match(m.body, /Good morning, Meera\. Welcome to \*Dushala\*/);
+  assert.match(m.body, /Good morning, Meera\. Welcome to \*Pashmor\*/);
   assert.deepEqual(cardIds(m), ['col:heirloom', 'col:winter', 'col:trousseau', 'col:him', 'gf', 'conc']);
 });
 
@@ -170,7 +170,7 @@ test('the full gift journey: finder form, three picks, one-page details, address
   const o = store.data.orders[ref];
   assert.match(o.card, /Happy anniversary/);
   const paid = c.pay(ref);
-  assert.match(texts(paid), /Your order \*DU-1041\* is confirmed/);
+  assert.match(texts(paid), /Your order \*PM-1041\* is confirmed/);
   assert.match(texts(paid), /No\. 9 of 12/);
   assert.match(alerts(paid)[0].lines.join(' '), /gift, price hidden/);
 
@@ -243,7 +243,7 @@ test('a failed payment keeps the piece; bank transfer works and you confirm it',
   const [failed] = msgs(c.pay(ref, 'failed'));
   assert.match(failed.body, /nothing has been charged/);
   assert.equal(msgs(c.tap('pay:retry'))[0].type, 'order');
-  assert.match(texts(c.tap('pay:bank')), /Reference: DU-1041/);
+  assert.match(texts(c.tap('pay:bank')), /Reference: PM-1041/);
   assert.equal(store.data.orders[ref].status, 'awaiting_transfer');
   assert.match(texts(studio('transferReceived', { orderId: ref })), /is confirmed/);
   assert.equal(store.data.orders[ref].status, 'paid');
@@ -392,7 +392,7 @@ test('the WhatsApp catalogue: a product message opens that piece; a cart sets as
   const { as, store } = setup();
   const [m] = msgs(as('c1', 'Meera').say("I'd like to see Sahar in Sage", { referral: { pieceId: 'sahar-sage' } }));
   assert.equal(m.type, 'carousel');
-  assert.match(m.body, /Welcome to \*Dushala\*/);
+  assert.match(m.body, /Welcome to \*Pashmor\*/);
   assert.match(m.body, /\*Sahar in Sage\*/);
   const cart = msgs(as('c2', 'Bina').cart(['kahwa', 'chinar']));
   assert.match(cart[0].body, /starting with \*Kahwa\*/);
@@ -445,7 +445,7 @@ test('Hinglish and everyday phrasing are understood', () => {
 
 test('the WhatsApp connector builds valid payloads and reads webhooks', () => {
   const wa = createWhatsApp({
-    env: { RAZORPAY_CONFIG_NAME: 'dushala-rzp', FLOW_ORDER_OPTIONS_ID: '111', FLOW_GIFT_FINDER_ID: '222' },
+    env: { RAZORPAY_CONFIG_NAME: 'pashmor-rzp', FLOW_ORDER_OPTIONS_ID: '111', FLOW_GIFT_FINDER_ID: '222' },
     resolveMedia: () => ({ url: 'https://example.com/a.jpg', photo: true }),
     resolveDoc: () => ({ pdfUrl: 'https://example.com/a.pdf' }),
   });
@@ -475,7 +475,7 @@ test('the WhatsApp connector builds valid payloads and reads webhooks', () => {
         { from: '919810000000', id: 'w4', type: 'interactive', interactive: { type: 'nfm_reply', nfm_reply: { name: 'address_message', response_json: JSON.stringify({ values: { name: 'M', in_pin_code: '110024', city: 'New Delhi', state: 'Delhi', house_number: 'C-41' } }) } } },
         { from: '919810000000', id: 'w5', type: 'order', order: { product_items: [{ product_retailer_id: 'kahwa', quantity: 1 }] } },
       ],
-      statuses: [{ type: 'payment', status: 'captured', recipient_id: '919810000000', payment: { reference_id: 'DU-1041', transaction: { status: 'success', method: { type: 'upi' } } } }],
+      statuses: [{ type: 'payment', status: 'captured', recipient_id: '919810000000', payment: { reference_id: 'PM-1041', transaction: { status: 'success', method: { type: 'upi' } } } }],
     } }] }],
   };
   const { inbound, payments } = wa.parseWebhook(hook);

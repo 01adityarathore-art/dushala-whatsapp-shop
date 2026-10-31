@@ -16,7 +16,7 @@ fs.mkdirSync(path.join(OUT, 'src'), { recursive: true });
 // The page, switched to demo mode.
 const html = fs.readFileSync(path.join(ROOT, 'public', 'index.html'), 'utf8')
   .replace('<script src="app.js" type="module"></script>', '<script>window.SHAWL_DEMO = true;</script>\n<script src="app.js" type="module"></script>')
-  .replace('<title>Dushala Bot Studio</title>', `<title>${config.brand.name} WhatsApp Shop · Demo</title>\n<meta name="description" content="A working demo of a premium WhatsApp shop for heirloom shawls.">`);
+  .replace('<title>Pashmor Bot Studio</title>', `<title>${config.brand.name} WhatsApp Shop · Demo</title>\n<meta name="description" content="A working demo of a premium WhatsApp shop for heirloom shawls.">`);
 fs.writeFileSync(path.join(OUT, 'index.html'), html);
 for (const f of ['app.js', 'app.css', 'demo-backend.js']) fs.copyFileSync(path.join(ROOT, 'public', f), path.join(OUT, f));
 

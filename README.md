@@ -1,10 +1,10 @@
-# Dushala · a premium shawl shop inside WhatsApp
+# Pashmor · a premium shawl shop inside WhatsApp
 
 A complete WhatsApp concierge for a heirloom-shawl house. Customers browse a photo lookbook, get help choosing a gift,
 reserve a piece, choose a gift box and a handwritten card, share an address and pay by UPI, all without leaving the chat.
 The shop gets each order on its phone and taps three buttons: **Wrapped**, **Dispatched**, **Delivered**.
 
-### ▶ [Try the live demo](https://01adityarathore-art.github.io/dushala-whatsapp-shop/)
+### ▶ [Try the live demo](https://01adityarathore-art.github.io/pashmor-whatsapp-shop/)
 
 The demo runs entirely in your browser. On the left is what a customer sees on WhatsApp; on the right is the shop's back office.
 Nothing is sent anywhere and no payment is real.
@@ -52,7 +52,7 @@ the catalogue with stock, and every message exactly as WhatsApp receives it.
 
 - **Real and working:** the whole conversation, the gift finder, holds and stock, orders, payments flow, invoices,
   certificates, the Studio, and the code that talks to WhatsApp's official Cloud API.
-- **Sample:** the brand name *Dushala*, the 15 pieces, prices and seller details. The model photos are AI-generated
+- **Sample:** the 15 pieces, prices and seller details. The model photos are AI-generated
   stand-ins; the real shop uses photographs of its own shawls.
 - **Not yet connected:** a real WhatsApp number. That needs the shop's verified Meta Business account, a phone number and
   Razorpay (steps below).
